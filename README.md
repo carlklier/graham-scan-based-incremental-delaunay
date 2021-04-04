@@ -8,6 +8,14 @@ Graham Scan-Based Incremental Delaunay Triangulation:
 - Incrementally add the next sorted point and use Graham Scan to get the convex hull, saving any edges that were made
 - Flip the current triangulation to Delaunay and repeat until done
 
+TODO LIST:
+- Implement Halfedge data structure, with addleaf and addedge
+  - get two sorting algorithms loglinear time, one for x-coord and one for slope
+  - Use a stack to track points on the convex hull
+  - Use a queue to track edges that need to be flipped
+  - Save all the edges made during the convex hull process
+- Work on visualization
+- Write some tests
 
 Due Date: final code and presentation on April 29th
 
