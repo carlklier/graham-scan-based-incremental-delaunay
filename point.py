@@ -32,7 +32,7 @@ def crosscount(a,b,c,d):
     cdb = orient(c,d,b)
     return (abc - abd) * (abs(cda - cdb)) / 4
 
-
+'''
 def presort(points):
 #bubble sort based Graham-Scan points sort. Using cos value
 	p_0=points[0]
@@ -68,7 +68,7 @@ def presort(points):
 	for i in rank:
 		sorted.append(points[i])
 	return sorted
-		
+'''
 
 class Point:
     def __init__(self, *coordinates, z = 1):
@@ -86,11 +86,20 @@ class Point:
     def __eq__(self, other):
         return all(self._p == other._p)
 
+    def __lt__(self, other):
+        if (self._p[0] != other._p[0]):
+            return self._p[0] < other._p[0]
+        else:
+            return self._p[1] < other._p[1]
+
     def __hash__(self):
         return hash(tuple(self._p))
 
     def __str__(self):
         return str(self._p[:2])
+
+    def __getitem__(self, index):
+        return self._p[index]
 
 
 

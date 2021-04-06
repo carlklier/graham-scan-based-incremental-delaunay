@@ -13,15 +13,14 @@ class GrahamScanDelaunay:
     def __init__(self, V):
         # Sort the points and construct base convex hull
         n = len(V)
-        V = sortbyx(V)
-        V = sortbyslope(V)
-        P = Polygon({V[0], V[1], V[2]})
+        self.V = sort_points(V)
+        P = Polygon({self.V[0], self.V[1], self.V[2]})
 
         # Initializing Data Structures
-        stack = deque() # Graham Scan Point Stack
-        q = deque() # Delaunay Edge Queue
+        self.stack = deque() # Graham Scan Point Stack
+        self.q = deque() # Delaunay Edge Queue
 
-        # Convert convex hull into half-edges
+        # Convert triangle into half-edges
         self._handle = {}
         inside = [HalfEdge(p) for p in P]
         outside = [HalfEdge(p) for p in P]
@@ -34,16 +33,14 @@ class GrahamScanDelaunay:
             inside[i].prev = inside[i - 1]
 
             outside[i].link = outside[i - 1]
-            outside[i-1].prev = outside[i]
-            stack.append(outside[i])
-
-        
+            outside[i - 1].prev = outside[i]
+            self.stack.append(outside[i])
 
         # Incrementally add to the triangulation
         for i in range(3, n):
             self.convexhull(V[i])
-            while len(q) != 0:
-                self.isdelaunay(q.popleft())
+            while len(self.q) != 0:
+                self.isdelaunay(self.q.popleft())
 
     def points(self):
         return iter(self._handle)
@@ -85,10 +82,26 @@ class GrahamScanDelaunay:
         # flip the edge and push neighbor edges into the Delaunay Edge Queue
         pass
 
-# Sort the points by their x-coordinates
-def sortbyx(P):
-    return []
+_p1 = Point(0, 0)
 
-# Sort the points by their slope relative to the first entry
-def sortbyslope(P):
-    return []
+# Sort the points such that the first point of the list
+# is the bottomleftmost, and the remaining points
+# are sorted in ascending order of their slope
+# with respect to the first point
+def sort_points(V):
+    n = len(V)
+    # Sort by x-coordinates to get the first point
+    _V = sorted(V)
+    _p1 = _V[1]
+    
+    # Sort remaining points by slope
+    _V[1:n] = sorted(_V, key=get_slope)
+
+    return _V
+
+# Key function to help sort by slope
+def get_slope(p):
+    try:
+        return (_p1[1]-p[1]) / (_p1[0]-p[0])
+    except ZeroDivisionError:
+        return float('inf')
