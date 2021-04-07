@@ -11,14 +11,15 @@ class HalfEdge:
 
 class GrahamScanDelaunay:
     def __init__(self, V):
+        # Assume General Position: No 3 points in V are collinear
         # Sort the points and construct base convex hull
         n = len(V)
         self.V = sort_points(V)
-        P = Polygon({self.V[0], self.V[1], self.V[2]})
+        P = Polygon([self.V[0], self.V[1], self.V[2]])
 
         # Initializing Data Structures
-        self.stack = deque() # Graham Scan Point Stack
-        self.q = deque() # Delaunay Edge Queue
+        self.stack = deque() # Convex Hull Half Edge Stack
+        self.q = deque() # Delaunay Half Edge Queue
 
         # Convert triangle into half-edges
         self._handle = {}
@@ -38,21 +39,17 @@ class GrahamScanDelaunay:
 
         # Incrementally add to the triangulation
         for i in range(3, n):
-            self.convexhull(V[i])
-            while len(self.q) != 0:
+            self.incrementhull(V[i])
+            while len(self.q) > 0:
                 self.isdelaunay(self.q.popleft())
 
     def points(self):
         return iter(self._handle)
 
-    def addedge_halfedges(self, a, b):
-        """
-        Add an edge that goes from `a.point` to `b.point`.
-        It is assumed that `a` and `b` are on the face that
-        will contain the new edge.
-
-        Note: we did this one in class.
-        """
+    # Connects an edge from a.point to b.point
+    # Assumes a and b are the outside halfedges
+    # During the convex hull process
+    def addedge(self, a, b):
         c = HalfEdge(a.point, b, a.prev)
         d = HalfEdge(b.point, a, b.prev, c)
         c.twin = d
@@ -60,17 +57,34 @@ class GrahamScanDelaunay:
         b.prev.link = d
         a.prev = d
         b.prev = c
+        # Push new edge into the Delaunay Edge Queue
+        self.q.append(c)
 
-    def addedge(self, a, b):
-        pass
-
+    # Connects an edge from a.point to p
+    # a is the outside halfedge and p is a point
+    # Only used for the convex hull
     def addleaf(self, a, p):
-        pass
+        h = HalfEdge(p, a)
+        t = HalfEdge(a.point, h, a.prev, h)
+        h.prev = t
+        h.twin = t
+        a.prev.link = t
+        a.prev = h
+        # Push new edge into the Delaunay Edge Queue
+        self.q.append(h)
     
     # Use the convex hull algorithm to add edges to the triangulation
-    def convexhull(self, p):
-        # Push any new edges into the Delaunay Edge Queue
-        pass
+    def incrementhull(self, p):
+        # Connect the top point of the stack to the new point
+        self.addleaf(self.stack[-1], p)
+        h = self.q[-1] # Halfedge from p
+        # Run graham scan to see if backtracking is needed
+        while (orient(self.stack[-2].point, self.stack[-1].point, p) != 1):
+            self.stack.pop()
+            self.addedge(self.stack[-1], h)
+        # Connect the new point to the first point
+        self.addedge(h, self.stack[0])
+        
     
     # check if edge is locally delaunay
     def isdelaunay(self, h):
