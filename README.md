@@ -14,10 +14,14 @@ TODO LIST:
   - [x] Use a stack to track points on the convex hull
   - [x] Use a queue to track edges that need to be flipped
   - [x] Save all the edges made during the convex hull process
-  - [ ] Check the queued edges if they are locally Delaunay
-  - [ ] Flip non-locally Delaunay edges
+  - [x] Check the queued edges if they are locally Delaunay
+  - [x] Flip non-locally Delaunay edges
 - [ ] Work on visualization
 - [ ] Write some tests
+  - [ ] Test sorting for setting up the points
+  - [ ] Test Convex Hull triangulation
+  - [ ] Test Locally Delaunay check
+  - [ ] Test edge flipping on a simple case
 
 Due Date: final code and presentation on April 29th
 
