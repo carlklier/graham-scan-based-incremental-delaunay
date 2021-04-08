@@ -59,6 +59,7 @@ class GrahamScanDelaunay:
         b.prev = c
         # Push new edge into the Delaunay Edge Queue
         self.q.append(c)
+        return c
 
     # Connects an edge from a.point to p
     # a is the outside halfedge and p is a point
@@ -72,6 +73,7 @@ class GrahamScanDelaunay:
         a.prev = h
         # Push new edge into the Delaunay Edge Queue
         self.q.append(h)
+        return h
     
     # Use the convex hull algorithm to add edges to the triangulation
     def incrementhull(self, p):
@@ -84,17 +86,44 @@ class GrahamScanDelaunay:
             self.addedge(self.stack[-1], h)
         # Connect the new point to the first point
         self.addedge(h, self.stack[0])
+        # Add the convex hull outside halfedge to the stack
+        self.stack.append(h.prev.twin)
+        return
         
     
     # check if edge is locally delaunay
     def isdelaunay(self, h):
+        # Outside edge, do not flip
+        if h in self.stack or h.twin in self.stack:
+            return
         # if not locally delaunay, flip the edge
-        pass
+        if (incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point)) == 1:
+            self.flipedge(h)
+        return
 
     # Flip the current edge
     def flipedge(self, h):
-        # flip the edge and push neighbor edges into the Delaunay Edge Queue
-        pass
+        # Link the quad toegether
+        h.prev.link = h.twin.link
+        h.twin.prev.link = h.link
+        h.link.prev = h.twin.prev
+        h.twin.link.prev = h.prev
+        # Flip the edge
+        h.link = h.link.link
+        h.twin.link = h.twin.link.link
+        h.prev = h.twin.link.prev
+        h.twin.prev = h.link.prev
+        # Link the quad back to the edge
+        h.link.prev = h
+        h.twin.link.prev = h.twin
+        h.prev.link = h
+        h.twin.prev.link = h.twin
+        # Push the neighboring edges into the Delaunay Queue
+        self.q.append(h.link)
+        self.q.append(h.prev)
+        self.q.append(h.twin.link)
+        self.q.append(h.twin.prev)
+        return
 
 _p1 = Point(0, 0)
 

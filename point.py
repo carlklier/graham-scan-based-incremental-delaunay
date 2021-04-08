@@ -1,4 +1,4 @@
-from numpy import array, append, cross
+from numpy import array, append, cross, sign
 from numpy.linalg import det, solve
 
 def point(*coords, z = 1):
@@ -31,6 +31,16 @@ def crosscount(a,b,c,d):
     cda = orient(c,d,a)
     cdb = orient(c,d,b)
     return (abc - abd) * (abs(cda - cdb)) / 4
+
+def incircle(a,b,c,d):
+    zero = [0, 0, 1]
+    _a = [a[0], a[1], dist(a, zero), 1]
+    _b = [b[0], b[1], dist(b, zero), 1]
+    _c = [c[0], c[1], dist(c, zero), 1]
+    _d = [d[0], d[1], dist(d, zero), 1]
+    A = array([_a, _b, _c, _d])
+    return sign(det(A))*orient(a,b,c)
+
 
 '''
 def presort(points):
