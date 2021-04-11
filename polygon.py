@@ -1,4 +1,5 @@
-from point import point, orient, crosscount
+#from point import point, orient, crosscount
+from point import orient, crosscount
 
 class Polygon:
     def __init__(self, points):

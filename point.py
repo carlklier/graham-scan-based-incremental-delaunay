@@ -1,8 +1,8 @@
 from numpy import array, append, cross, sign
 from numpy.linalg import det, solve
 
-def point(*coords, z = 1):
-    return append(coords, z)
+# def point(*coords, z = 1):
+#     return append(coords, z)
 
 def dist(p,q):
     return (sum((p.array()-q.array())**2))**0.5
@@ -33,7 +33,8 @@ def crosscount(a,b,c,d):
     return (abc - abd) * (abs(cda - cdb)) / 4
 
 def incircle(a,b,c,d):
-    zero = [0, 0, 1]
+    #zero = [0, 0, 1]
+    zero = Point(0,0)
     _a = [a[0], a[1], dist(a, zero), 1]
     _b = [b[0], b[1], dist(b, zero), 1]
     _c = [c[0], c[1], dist(c, zero), 1]

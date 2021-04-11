@@ -1,6 +1,8 @@
 from point import *
 from polygon import *
 from collections import deque
+import numpy
+numpy.seterr(all='raise')
 
 class HalfEdge:
     def __init__(self, point, link = None, prev = None, twin = None):
@@ -138,7 +140,7 @@ def sort_points(V):
     _p1 = _V[1]
     
     # Sort remaining points by slope
-    _V[1:n] = sorted(_V, key=get_slope)
+    _V[1:n] = sorted(_V[1:n], key=get_slope)
 
     return _V
 
@@ -146,5 +148,5 @@ def sort_points(V):
 def get_slope(p):
     try:
         return (_p1[1]-p[1]) / (_p1[0]-p[0])
-    except ZeroDivisionError:
+    except (ZeroDivisionError, RuntimeWarning, FloatingPointError) as e:
         return float('inf')
