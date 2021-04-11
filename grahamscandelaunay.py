@@ -38,11 +38,14 @@ class GrahamScanDelaunay:
             outside[i].link = outside[i - 1]
             outside[i - 1].prev = outside[i]
             self.stack.append(outside[i])
-
+    def run(self):
+        n=len(self.V)
         # Incrementally add to the triangulation
         for i in range(3, n):
-            self.incrementhull(V[i])
+            self.incrementhull(self.V[i])
+
             while len(self.q) > 0:
+                yield self.q
                 self.isdelaunay(self.q.popleft())
 
     def points(self):
