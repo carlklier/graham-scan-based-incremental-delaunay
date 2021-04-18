@@ -44,6 +44,11 @@ def on_key_press(symbol,modifiers):
         done = False
         state = None
         stepofthealgorithm = None
+    elif symbol == key.C: # clear all
+        ready = False
+        done = False
+        state = None
+        stepofthealgorithm = None
         V = []
     elif not ready and symbol == key.G: #generate randpt
         V.append(randpt())
