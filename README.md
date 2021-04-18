@@ -39,4 +39,11 @@ To run the project, please use the following command:
 ```python visual.py```
 
 ## Visualization
-Once you start the program, an empty window will pop up. You can add a point by click inside the window, or randomly generate one by pressing ```G```. Once you finish adding points, press ```S``` to start the Delaunay algorithm step by step. To go to the next step, press the Space Bar. To reset, press ```R```. The red point indicates the most recently added point and the blue edge indicates that the edge will be checked if it is Locally Delaunay.
+Once you start the program, an empty window will pop up. You can add a point by click inside the window, or randomly generate one by pressing ```G```. 
+Once you finish adding points, press ```S``` to start the Delaunay algorithm step-by-step visualization. 
+To go to the next step, press the Space Bar. 
+To reset to the start of the algorithm, press ```R```. To clear all points, press ```C```.
+The red point indicates the most recently added point. 
+The blue edge indicates that the edge will be checked if it is Locally Delaunay. 
+A black point indicates that the point in in the triangulation while a gray point indicates that it has not yet been added to the triangulation.
+When the algorithm is complete, the background will turn green. Press ```R``` or ```C``` to reset the visualization.
