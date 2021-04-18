@@ -31,3 +31,11 @@ Timeline for progress:
 - 4/15
 - 4/22
 - 4/29 project due along with presentation
+
+## Enviroment
+Please make sure you have installed the pyglet and numpy before running the code, Those two package can be installed using pip command.
+To run the project, please use the following command:
+python visual.py
+
+## Visualization
+Once you start the program, an empty window is pooping up. You can add a point by click inside the window. Once you finish adding points, press s to start the Delaunay algorithm step by step. To go to the next step, press space 
