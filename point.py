@@ -42,6 +42,16 @@ def incircle(a,b,c,d):
     A = array([_a, _b, _c, _d])
     return sign(det(A))*orient(a,b,c)
 
+# Slope from a to b
+def slope(a,b):
+    try:
+        return (b[1]-a[1]) / (b[0]-a[0])
+    except (ZeroDivisionError, RuntimeWarning, FloatingPointError) as e:
+        if (b[1] > a[1]):
+            return float('inf')
+        else:
+            return float('-inf')
+
 
 '''
 def presort(points):

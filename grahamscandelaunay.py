@@ -150,8 +150,6 @@ class GrahamScanDelaunay:
         self.q.append(h.twin.prev)
         return
 
-_p1 = Point(0, 0)
-
 # Sort the points such that the first point of the list
 # is the bottomleftmost, and the remaining points
 # are sorted in ascending order of their slope
@@ -160,24 +158,17 @@ def sort_points(V):
     n = len(V)
     # Sort by x-coordinates to get the first point
     _V = sorted(V)
-    _p1 = _V[0]
     
-    # Sort remaining points by slope
-    _V[1:n] = sorted(_V[1:n], key=get_slope)
+    pairs = [(_V[0], float('-inf'))]
+    for i in range(1,n):
+        pairs.append((_V[i], slope(_V[0], _V[i])))
+        print(slope(_V[0], _V[i]))
+
+    pairs = pairs[0:1] + sorted(pairs[1:], key=lambda p: p[1]) # Sort by slope
 
     print("sorted")
-    for p in _V:
-        try:
-            print((_p1[1]-p[1]) / (_p1[0]-p[0]))
-        except (ZeroDivisionError, RuntimeWarning, FloatingPointError) as e:
-            print("inf")
-    return _V
-
-# Key function to help sort by slope
-def get_slope(p):
-    try:
-        slope = (_p1[1]-p[1]) / (_p1[0]-p[0])
-        print(slope)
-        return slope
-    except (ZeroDivisionError, RuntimeWarning, FloatingPointError) as e:
-        return float('inf')
+    output = []
+    for p in pairs:
+        print(p[1])
+        output.append(p[0])
+    return output
