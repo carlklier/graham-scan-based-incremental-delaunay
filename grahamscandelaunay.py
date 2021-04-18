@@ -16,16 +16,15 @@ class GrahamScanDelaunay:
         # Assume General Position: No 3 points in V are collinear
         # and no 4 points in V are cocircular
         # Sort the points and construct base convex hull
-        n = len(V)
         self.V = sort_points(V)
         P = Polygon([self.V[0], self.V[1], self.V[2]])
 
         # Initializing Data Structures
         self.stack = deque() # Convex Hull Half Edge Stack
         self.q = deque() # Delaunay Half Edge Queue
+        self.edges = deque() # List of All Edges
 
         # Convert triangle into half-edges
-        self._handle = deque() # List of all halfedges
         outside = [HalfEdge(p) for p in P]
         inside = [HalfEdge(p) for p in P]
         for i in range(3):
@@ -38,22 +37,37 @@ class GrahamScanDelaunay:
             inside[i].link = inside[i - 1]
             inside[i - 1].prev = inside[i]
             self.stack.append(outside[i])
-            self._handle.append(outside[i])
+            self.edges.append(outside[i])
 
     # Returns the current iteration, the sorted list of points, and the edges in the triangulation
     def run(self):
         n=len(self.V)
-        yield self.points()
+        yield self.get_vis_data()
         # Incrementally add to the triangulation
         for i in range(3, n):
             self.incrementhull(self.V[i])
-            yield self.points()
+            yield self.get_vis_data(i)
+            # Check if the new edges need to be flipped
             while len(self.q) > 0:
                 self.isdelaunay(self.q.popleft())
-                yield self.points()
+                yield self.get_vis_data(i)
 
-    def points(self):
-        return iter(self._handle)
+    # Returns a list of halfedges for visualization purposes
+    def getedges(self):
+        return iter(self.edges)
+
+    # Returns the current edge being checked for visualization purposes
+    # If the queue is empty, return None
+    def currentedge(self):
+        return self.q[0] if len(self.q) > 0 else None
+
+    # Given the index of the current point, returns a list for visualization purposes
+    def get_vis_data(self, i = 0):
+        currentpt = None
+        if i >= 3:
+            currentpt = self.V[i]
+        return [currentpt, self.getedges(), self.currentedge()]
+
 
     # Connects an edge from a.point to b.point
     # Assumes a and b are the outside halfedges
@@ -68,7 +82,7 @@ class GrahamScanDelaunay:
         b.prev = c
         # Push new edge into the Delaunay Edge Queue
         self.q.append(c)
-        self._handle.append(c)
+        self.edges.append(c)
         return c
 
     # Connects an edge from a.point to p
@@ -83,7 +97,7 @@ class GrahamScanDelaunay:
         a.prev = h
         # Push new edge into the Delaunay Edge Queue
         self.q.append(h)
-        self._handle.append(t)
+        self.edges.append(t)
         return h
     
     # Use the convex hull algorithm to add edges to the triangulation
@@ -102,29 +116,21 @@ class GrahamScanDelaunay:
         self.q.append(self.stack.pop())
         self.stack.append(h.prev.twin.prev)
         self.stack.append(h.prev.twin)
-        for h in self.stack:
-            print(str(h.point) + str(h.link.point))
         return
         
     
     # check if edge is locally delaunay
     def isdelaunay(self, h):
-        print("checking " + str(h.point) + str(h.link.point))
         # Outside edge, do not flip
         if h in self.stack or h.twin in self.stack:
-            print("outside edge, do nothing")
             return
         # if not locally delaunay, flip the edge
-        print("incircle on " + str(h.point) + str(h.prev.point) + str(h.link.point) + str(h.twin.prev.point))
         if incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point) > 0:
-            print("in circle passed")
             self.flipedge(h)
-        print("after in circle")
         return
 
     # Flip the current edge
     def flipedge(self, h):
-        print("flipping " + str(h.point) + str(h.link.point))
         # Link the quad toegether
         h.prev.link = h.twin.link
         h.twin.prev.link = h.link
@@ -142,7 +148,6 @@ class GrahamScanDelaunay:
         h.twin.prev.link = h.twin
         h.point = h.twin.link.point
         h.twin.point = h.link.point
-        print("result " + str(h.point) + str(h.link.point))
         # Push the neighboring edges into the Delaunay Queue
         self.q.append(h.link)
         self.q.append(h.prev)
@@ -159,16 +164,15 @@ def sort_points(V):
     # Sort by x-coordinates to get the first point
     _V = sorted(V)
     
+    # Map each point to the slope relative to the bottomleftmost point
     pairs = [(_V[0], float('-inf'))]
     for i in range(1,n):
         pairs.append((_V[i], slope(_V[0], _V[i])))
-        print(slope(_V[0], _V[i]))
 
     pairs = pairs[0:1] + sorted(pairs[1:], key=lambda p: p[1]) # Sort by slope
 
-    print("sorted")
+    # Return the list of points
     output = []
     for p in pairs:
-        print(p[1])
         output.append(p[0])
     return output
