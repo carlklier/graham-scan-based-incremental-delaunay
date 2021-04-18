@@ -32,7 +32,7 @@ Timeline for progress:
 - 4/22
 - 4/29 project due along with presentation
 
-## Enviroment
+## Environment
 Please make sure you have installed the pyglet and numpy before running the code, Those two package can be installed using pip command
 ```pip install numpy``` and ```pip install pyglet```
 To run the project, please use the following command:
