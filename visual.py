@@ -17,8 +17,9 @@ def randpt():
     margin = 100
     return  Point(randrange(margin,W-margin),randrange(margin,H-margin))
 
-# V = [randpt() for i in range(6)]
-V = [Point((x+2)*100,(y+1)*100) for x,y in [(1,1),(3,0),(5,2),(2,2),(6,4),(3,6),(1,5)]]
+V = [randpt() for i in range(6)]
+# V = [Point((x+2)*100,(y+1)*100) for x,y in [(1,1),(3,0),(5,2),(2,2),(6,4),(3,6),(1,5)]]
+# V = [Point((x)*50,(y)*50) for x,y in [(5,0),(8,5),(5,10),(2,5),(6,7)]]
 g=GrahamScanDelaunay(V)
 
 stepofthealgorithm = g.run()

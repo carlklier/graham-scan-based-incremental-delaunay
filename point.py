@@ -35,10 +35,10 @@ def crosscount(a,b,c,d):
 def incircle(a,b,c,d):
     #zero = [0, 0, 1]
     zero = Point(0,0)
-    _a = [a[0], a[1], dist(a, zero), 1]
-    _b = [b[0], b[1], dist(b, zero), 1]
-    _c = [c[0], c[1], dist(c, zero), 1]
-    _d = [d[0], d[1], dist(d, zero), 1]
+    _a = [a[0], a[1], dist(a, zero)**2, 1]
+    _b = [b[0], b[1], dist(b, zero)**2, 1]
+    _c = [c[0], c[1], dist(c, zero)**2, 1]
+    _d = [d[0], d[1], dist(d, zero)**2, 1]
     A = array([_a, _b, _c, _d])
     return sign(det(A))*orient(a,b,c)
 

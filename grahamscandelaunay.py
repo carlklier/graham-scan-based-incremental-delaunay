@@ -83,7 +83,7 @@ class GrahamScanDelaunay:
         a.prev = h
         # Push new edge into the Delaunay Edge Queue
         self.q.append(h)
-        self._handle.append(h)
+        self._handle.append(t)
         return h
     
     # Use the convex hull algorithm to add edges to the triangulation
@@ -115,7 +115,8 @@ class GrahamScanDelaunay:
             print("outside edge, do nothing")
             return
         # if not locally delaunay, flip the edge
-        if (incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point)) < 1:
+        print("incircle on " + str(h.point) + str(h.prev.point) + str(h.link.point) + str(h.twin.prev.point))
+        if incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point) > 0:
             print("in circle passed")
             self.flipedge(h)
         print("after in circle")
@@ -164,6 +165,7 @@ def sort_points(V):
     # Sort remaining points by slope
     _V[1:n] = sorted(_V[1:n], key=get_slope)
 
+    print("sorted")
     for p in _V:
         try:
             print((_p1[1]-p[1]) / (_p1[0]-p[0]))
@@ -174,6 +176,8 @@ def sort_points(V):
 # Key function to help sort by slope
 def get_slope(p):
     try:
-        return (_p1[1]-p[1]) / (_p1[0]-p[0])
+        slope = (_p1[1]-p[1]) / (_p1[0]-p[0])
+        print(slope)
+        return slope
     except (ZeroDivisionError, RuntimeWarning, FloatingPointError) as e:
         return float('inf')
