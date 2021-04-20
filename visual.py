@@ -59,7 +59,7 @@ def on_key_press(symbol,modifiers):
         stepofthealgorithm = g.run()
         state = next(stepofthealgorithm)
         ready = True
-    elif ready and not done and symbol == key.SPACE: # next
+    elif ready and symbol == key.SPACE: # next
         try:
             state = next(stepofthealgorithm)
             save_state(state)
@@ -67,6 +67,7 @@ def on_key_press(symbol,modifiers):
         except StopIteration:
             done = True
             state = load_state()
+            save_state(state)
             print("STOP")
             pass
 
