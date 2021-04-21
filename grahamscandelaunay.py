@@ -38,6 +38,7 @@ class GrahamScanDelaunay:
             outside[i].link = outside[i - 1]
             outside[i - 1].prev = outside[i]
             self.stack.append(outside[i])
+            
     def run(self):
         n=len(self.V)
         # Incrementally add to the triangulation

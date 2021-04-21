@@ -103,7 +103,7 @@ class TestGrahamScanDelaunay(unittest.TestCase):
     def test_addedge(self):
         p1 = Point(0,1)
         p2 = Point(1,1)
-        p3 = Point(1, 0)
+        p3 = Point(1,0)
         p4 = Point(0,0)
 
         V = [p1, p2, p3, p4]
@@ -143,9 +143,45 @@ class TestGrahamScanDelaunay(unittest.TestCase):
 
         # add an edge across the diagonal from h1.point to h3.point
         gsd = GrahamScanDelaunay(V)
-        gsd.incrementhull = MagicMock(return_value=None)
-        gsd.isdelaunay = MagicMock(return_value=None)
+        #gsd.incrementhull = MagicMock(return_value=None)
+        #gsd.isdelaunay = MagicMock(return_value=None)
         c = gsd.addedge(h1, h3)
+
+        self.assertTrue(h1.link == h2)
+        self.assertTrue(h1.prev == c.twin)
+        self.assertTrue(h1.twin == h5)
+
+        self.assertTrue(h2.link == c.twin)
+        self.assertTrue(h2.prev == h1)
+        self.assertTrue(h2.twin == h6)
+
+        self.assertTrue(h3.link == h4)
+        self.assertTrue(h3.prev == c)
+        self.assertTrue(h3.twin == h7)
+
+        self.assertTrue(h4.link == c)
+        self.assertTrue(h4.prev == h3)
+        self.assertTrue(h4.twin == h8)
+
+        self.assertTrue(h5.link == c)
+        self.assertTrue(h5.prev == h6)
+        self.assertTrue(h5.twin == h1)
+
+        self.assertTrue(h6.link == h5)
+        self.assertTrue(h6.prev == c)
+        self.assertTrue(h6.twin == h2)
+
+        self.assertTrue(h7.link == c.twin)
+        self.assertTrue(h7.prev == h8)
+        self.assertTrue(h7.twin == h3)
+
+        self.assertTrue(h8.link == h7)
+        self.assertTrue(h8.prev == c.twin)
+        self.assertTrue(h8.twin == h4)
+
+        self.assertTrue(c.link == )
+        self.assertTrue(h2.prev == h1)
+        self.assertTrue(h2.twin == h6)
 
         self.assertTrue(h4.link == c)
         self.assertTrue(c.link == h3)
