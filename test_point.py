@@ -2,6 +2,16 @@ import unittest
 from point import *
 
 class TestPoint(unittest.TestCase):
+    def test_slope(self):
+        p1 = Point(0,0)
+        p2 = Point(2,4)
+        p3 = Point(0,4)
+
+        # 0/0 should throw runtime warning or FloatingPointException and return float(inf)
+        self.assertEqual(slope(p1, p2), 2)
+        self.assertEqual(slope(p2, p1), 2)
+
+        self.assertEqual(slope(p1, p3), float("inf"))
 
     def test_in_circle(self):
         p1 = Point(5,0)

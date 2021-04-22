@@ -1,5 +1,6 @@
-from numpy import array, append, cross, sign
+from numpy import array, append, cross, sign, seterr
 from numpy.linalg import det, solve
+seterr(all='raise')
 
 # def point(*coords, z = 1):
 #     return append(coords, z)
