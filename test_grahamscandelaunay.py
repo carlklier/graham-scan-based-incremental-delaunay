@@ -221,11 +221,8 @@ class TestGrahamScanDelaunay(unittest.TestCase):
             # we shouldn't need to flip any edges so q should just run out after 4 steps
             state = next(step)
 
-       # self.assertRaises(StopIteration, next(step))
         with self.assertRaises(StopIteration):
             next(step)
-
-
 
 if __name__ == '__main__':
     unittest.main()
