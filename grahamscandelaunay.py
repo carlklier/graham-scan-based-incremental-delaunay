@@ -128,9 +128,16 @@ class GrahamScanDelaunay:
     def _isdelaunay(self, h):
         # Outside edge, do not flip
         if h in self.stack or h.twin in self.stack:
+            print(h.point, ' outside edge')
             return
         # if not locally delaunay, flip the edge
+        print(h.point)
+        print(h.prev.point)
+        print(h.link.point)
+        print(h.twin.prev.point)
+        print(incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point))
         if incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point) > 0:
+            print("Flipping Edge)")
             self._flipedge(h)
         return
 

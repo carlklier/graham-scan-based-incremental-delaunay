@@ -41,6 +41,7 @@ def incircle(a,b,c,d):
     _c = [c[0], c[1], dist(c, zero)**2, 1]
     _d = [d[0], d[1], dist(d, zero)**2, 1]
     A = array([_a, _b, _c, _d])
+    print(sign(det(A)))
     return sign(det(A))*orient(a,b,c)
 
 # Slope from a to b

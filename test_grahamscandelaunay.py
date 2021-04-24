@@ -147,7 +147,7 @@ class TestGrahamScanDelaunay(unittest.TestCase):
     def test_flipedge(self):
         p1 = Point(0,1)
         p2 = Point(1,1)
-        p3 = Point(1, 0)
+        p3 = Point(1,0)
         p4 = Point(0,0)
 
         V = [p1, p2, p3, p4]
@@ -192,6 +192,40 @@ class TestGrahamScanDelaunay(unittest.TestCase):
 
         # _add_edge adds 1 halfedge to the queue and _flip_edge adds 4 more for a total of 5
         self.assertEqual(len(gsd.q), 5)
+
+    def test_run(self):
+        p1 = Point(0,1)
+        p2 = Point(1,1)
+        p3 = Point(1,0)
+        p4 = Point(0,0)
+
+        V = [p1, p2, p3, p4]
+        gsd = GrahamScanDelaunay(V)
+        step = gsd.run()
+        state = next(step)
+
+        # These also test the _get_vis_data(), _current_edge(), and _getedges() methods
+        self.assertEqual(state[0], None)
+        self.assertEqual(len(list(state[1])), 3)
+        self.assertEqual(state[2], None)
+
+        state = next(step)
+
+        # also tests _incrementalhull() and _isdelaunay()
+        self.assertEqual(state[0], p1)
+        self.assertEqual(len(list(state[1])), 5)
+        self.assertEqual(state[2], gsd.q[0])
+
+        self.assertEqual(len(gsd.q), 4)
+        for i in range(4):
+            # we shouldn't need to flip any edges so q should just run out after 4 steps
+            state = next(step)
+
+       # self.assertRaises(StopIteration, next(step))
+        with self.assertRaises(StopIteration):
+            next(step)
+
+
 
 if __name__ == '__main__':
     unittest.main()
