@@ -1,6 +1,5 @@
 import unittest
 from point import *
-from polygon import Polygon
 from grahamscandelaunay import *
 import random
 

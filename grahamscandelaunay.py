@@ -1,5 +1,4 @@
 from point import *
-from polygon import *
 from collections import deque
 import numpy
 numpy.seterr(all='raise')
@@ -26,13 +25,14 @@ class GrahamScanDelaunay:
 
     # Yields the current iteration, the sorted list of points, and the edges in the triangulation
     def run(self):
-        # Construct base triangle using Polygon
         n=len(self.V)
-        P = Polygon([self.V[0], self.V[1], self.V[2]])
+
+        # Construct base triangle
+        base = [self.V[0], self.V[1], self.V[2]]
 
         # Convert triangle into half-edges
-        outside = [HalfEdge(p) for p in P]
-        inside = [HalfEdge(p) for p in P]
+        outside = [HalfEdge(p) for p in base]
+        inside = [HalfEdge(p) for p in base]
         for i in range(3):
             outside[i - 1].twin = inside[i]
             inside[i].twin = outside[i - 1]
