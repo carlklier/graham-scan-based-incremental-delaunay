@@ -1,6 +1,6 @@
 import unittest
 import numpy
-from point import *
+from grahamscandelaunay.point import *
 
 class TestPoint(unittest.TestCase):
     def setUp(self):
