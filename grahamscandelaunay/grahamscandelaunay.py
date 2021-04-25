@@ -1,4 +1,4 @@
-from point import *
+from .point import *
 from collections import deque
 import numpy
 numpy.seterr(all='raise')
