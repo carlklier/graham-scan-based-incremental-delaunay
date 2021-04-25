@@ -1,4 +1,4 @@
-from numpy import array, append, cross, sign, seterr, around
+from numpy import array, append, cross, sign, seterr, around, array_equal
 from numpy.linalg import det, solve
 seterr(all='raise')
 
@@ -45,7 +45,7 @@ class Point:
         return self._p
 
     def __eq__(self, other):
-        return all(self._p == other._p)
+        return array_equal(self._p, other._p)
 
     def __lt__(self, other):
         if (self._p[0] != other._p[0]):
