@@ -22,6 +22,7 @@ class GrahamScanDelaunay:
         self.stack = deque() # Convex Hull Half Edge Stack
         self.q = deque() # Delaunay Half Edge Queue
         self.edges = deque() # List of All Edges
+        self.flips = 0
 
     # Yields the current iteration, the sorted list of points, and the edges in the triangulation
     def run(self):
@@ -50,8 +51,8 @@ class GrahamScanDelaunay:
 
         # Incrementally add to the triangulation
         for i in range(3, n):
-            self._incrementhull(self.V[i])
-            yield self._get_vis_data(i) # Data to visualize after convex hull
+            yield from self._incrementhull(self.V[i])
+            yield self._get_vis_data(self.V[i], True) # Data to visualize after convex hull
             # Check if the new edges need to be flipped
             while len(self.q) > 0:
                 print("Printing self.q")
@@ -59,7 +60,7 @@ class GrahamScanDelaunay:
                     print(h.point)
                 print("checking isdelaunay()")
                 self._isdelaunay(self.q.popleft())
-                yield self._get_vis_data(i) # Data to visualize after delaunay check
+                yield self._get_vis_data(self.V[i], True) # Data to visualize after delaunay check
 
     # Returns a list of halfedges for visualization purposes
     def _getedges(self):
@@ -71,11 +72,20 @@ class GrahamScanDelaunay:
         return self.q[0] if len(self.q) > 0 else None
 
     # Given the index of the current point, returns a list for visualization purposes
-    def _get_vis_data(self, i = 0):
-        currentpt = None
-        if i >= 3:
-            currentpt = self.V[i]
-        return [currentpt, self._getedges(), self.q, self.stack]
+    def _get_vis_data(self, currentpt = None, delaunay_step = False):
+        cc = None
+        if delaunay_step and len(self.q) > 0 and not self._isOutside(self.q[0]) :
+            cc = self._getCircumcenter(self.q[0])
+        return [currentpt, self._getedges(), self.q, self.stack, cc, delaunay_step, self.flips]
+
+    # returns the circumcenter of the triangle the halfedge is in
+    def _getCircumcenter(self, h):
+        print("Checking cc(", h.point, h.prev.point, h.link.point, ") = ", circumcenter(h.point, h.prev.point, h.link.point))
+        return circumcenter(h.point, h.prev.point, h.link.point)
+
+    # returns whether the edge is on the convex hull
+    def _isOutside(self, h):
+        return h in self.stack or h.twin in self.stack
 
 
     # Connects an edge from a.point to b.point
@@ -113,13 +123,16 @@ class GrahamScanDelaunay:
     def _incrementhull(self, p):
         # Connect the top point of the stack to the new point
         self._addleaf(self.stack[-1], p)
+        yield self._get_vis_data(p)
         h = self.q[-1] # Halfedge from p
         # Run graham scan to see if backtracking is needed
         while (orient(self.stack[-2].point, self.stack[-1].point, p) != 1):
             self.stack.pop()
             self._addedge(self.stack[-1], h)
+            yield self._get_vis_data(p)
         # Connect the new point to the first point
         self._addedge(h, self.stack[0])
+        yield self._get_vis_data(p)
         # Add the convex hull outside halfedge to the stack
         self.q.append(h.link)
         h2 = self.stack.pop()
@@ -127,13 +140,12 @@ class GrahamScanDelaunay:
             self.q.append(h2)
         self.stack.append(h.prev.twin.prev)
         self.stack.append(h.prev.twin)
-        return
         
     
-    # check if edge is locally delaunay
+    # check if edge is locally delaunay; returns false if the edge is flipped
     def _isdelaunay(self, h):
         # Outside edge, do not flip
-        if h in self.stack or h.twin in self.stack:
+        if self._isOutside(h):
             print(h.point, ' is an outside edge, no need to do incircle test')
             return
         # if not locally delaunay, flip the edge
@@ -142,7 +154,9 @@ class GrahamScanDelaunay:
         if incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point) > 0:
             print("Flipping Edge")
             self._flipedge(h)
-        return
+            self.flips += 1
+            return False
+        return True
 
     # Flip the current edge
     def _flipedge(self, h):

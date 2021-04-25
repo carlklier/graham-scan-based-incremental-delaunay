@@ -27,6 +27,13 @@ def incircle(a,b,c,d):
       return 0
     return sign(d)*orient(a,b,c)
 
+def circumcenter(a,b,c):
+    zero = Point(0,0)
+    d = 2*((a[0]*(b[1]-c[1])) + (b[0]*(c[1]-a[1])) + (c[0]*(a[1]-b[1])))
+    x = ((dist(a, zero)**2)*(b[1]-c[1]) + (dist(b, zero)**2)*(c[1]-a[1]) + (dist(c, zero)**2)*(a[1]-b[1])) / d
+    y = ((dist(a, zero)**2)*(c[0]-b[0]) + (dist(b, zero)**2)*(a[0]-c[0]) + (dist(c, zero)**2)*(b[0]-a[0])) / d
+    return Point(x,y)
+
 # Slope from a to b
 def slope(a,b):
     try:
