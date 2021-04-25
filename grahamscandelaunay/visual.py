@@ -18,6 +18,8 @@ def line_1(a,b):
     shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(128,128,128)).draw()
 def line_2(a,b):
     shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,0,255)).draw()
+def line_3(a,b):
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,192,0)).draw()
 def randpt():
     margin = 100
     return  Point(randrange(margin,W-margin),randrange(margin,H-margin))
@@ -84,6 +86,8 @@ def on_draw():
             pts.append(halfedge.point)
             line_1(halfedge.point,halfedge.link.point)
         if len(state[2]) > 0: # highlight current edge
+            for h in state[2]: #color queued edges
+                line_3(h.point, h.link.point)
             line_2(state[2][0].point,state[2][0].link.point)
         for p in pts: # draw points
             pt_2(p)
