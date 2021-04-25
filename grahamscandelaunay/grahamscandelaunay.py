@@ -75,7 +75,7 @@ class GrahamScanDelaunay:
         currentpt = None
         if i >= 3:
             currentpt = self.V[i]
-        return [currentpt, self._getedges(), self._currentedge()]
+        return [currentpt, self._getedges(), self.q, self.stack]
 
 
     # Connects an edge from a.point to b.point
@@ -122,7 +122,9 @@ class GrahamScanDelaunay:
         self._addedge(h, self.stack[0])
         # Add the convex hull outside halfedge to the stack
         self.q.append(h.link)
-        self.q.append(self.stack.pop())
+        h2 = self.stack.pop()
+        if h2 not in self.q and h.twin not in self.q:
+            self.q.append(h2)
         self.stack.append(h.prev.twin.prev)
         self.stack.append(h.prev.twin)
         return

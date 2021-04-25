@@ -83,8 +83,8 @@ def on_draw():
         for halfedge in state[1]: # draw edges
             pts.append(halfedge.point)
             line_1(halfedge.point,halfedge.link.point)
-        if state[2] is not None: # highlight current edge
-            line_2(state[2].point,state[2].link.point)
+        if len(state[2]) > 0: # highlight current edge
+            line_2(state[2][0].point,state[2][0].link.point)
         for p in pts: # draw points
             pt_2(p)
         if state[0] is not None: # highlight current pt
