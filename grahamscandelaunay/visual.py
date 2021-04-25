@@ -1,9 +1,9 @@
-from .point import *
+from point import *
 from random import randrange
 import pyglet
 from pyglet import shapes
 from pyglet.window import key,mouse
-from .grahamscandelaunay import *
+from grahamscandelaunay import *
 from copy import deepcopy
 W,H = 1280, 720
 window =pyglet.window.Window(W,H)
