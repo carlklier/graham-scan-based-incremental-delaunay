@@ -9,7 +9,7 @@ setup(
     author="Carl Klier, Jimmy Zheng, Zhikai Gao",
     url='https://github.com/carlklier/graham-scan-based-incremental-delaunay',
     description="Graham-scan based incremental Delaunay triangulation algorithm with visualization.",
-    install_requires=['numpy >= 1.19.0'], ['pyglet >= 1.5.0'],
+    install_requires=['numpy >= 1.19.0','pyglet >= 1.5.0'],
     license="MIT license",
     long_description=readme,
     packages=find_packages(),

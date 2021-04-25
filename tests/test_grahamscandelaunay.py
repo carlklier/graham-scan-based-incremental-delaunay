@@ -1,6 +1,6 @@
 import unittest
-from point import *
-from grahamscandelaunay import *
+from grahamscandelaunay.point import *
+from grahamscandelaunay.grahamscandelaunay import *
 import random
 
 class TestGrahamScanDelaunay(unittest.TestCase):
