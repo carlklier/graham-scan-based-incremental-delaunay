@@ -40,7 +40,7 @@ This project has been uploaded to PyPi as a package. You can download the packag
 ```python3 -m pip install graham-scan-based-incremental-delaunay```
 After install the package, you can start the project by
 ```python3```
-and then ```>>> import graham-scan-based-incremental-delaunay```
+and then ```>>> import grahamscan_delaunay```
 ## Visualization
 Once you start the program, an empty window will pop up. You can add a point by click inside the window, or randomly generate one by pressing ```G```. 
 Once you finish adding points, press ```S``` to start the Delaunay algorithm step-by-step visualization. 
