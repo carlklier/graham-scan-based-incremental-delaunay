@@ -189,7 +189,7 @@ class GrahamScanDelaunay:
     # are sorted in ascending order of their slope
     # with respect to the first point
     def _sort_points(self, V):
-        leftmost = min(V, key = lambda p: p[0])
+        leftmost = min(V, key = lambda p: p)
         _V = sorted(V, key = lambda p: point.slope(leftmost, p))
         return _V
         # n = len(V)
