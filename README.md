@@ -1,39 +1,44 @@
 # graham-scan-based-incremental-delaunay
 
-Graham Scan-Based Incremental Delaunay Triangulation:
-- Sort the input points by x-coordinate
-- Select the leftmost, bottommost point as the pivot point
-- Sort the other points by angle relative to the pivot point their slopes relative to the pivot
-- Construct the base convex hull using the pivot point and the first two points sorted by angle
-- Incrementally add the next sorted point and use Graham Scan to get the convex hull, saving any edges that were made
-- Flip the current triangulation to Delaunay and repeat until done
+An Delaunay Triangulation algorithm that incrementally add points during the process and uses Graham Scan to construct the initial triangulation of the iteration.
 
+## Graham Scan-Based Incremental Delaunay Triangulation Algorithm
+Given a list of points:
+- Sort the list of points such that:
+  - the first point is the leftmost, bottommost point, used as the pivot point
+  - the remaining points are sorted by their slope in ascending order relative to the first point
+- Construct the base convex hull using first 3 points (pivot point and two points with the lowest slopes)
+- Incrementally add the next sorted point:
+  - Use Graham Scan to get the convex hull, saving any edges that were made
+  - Flip the current triangulation to Delaunay
+  - Repeat until done
+
+## Hotkeys
+- `LEFT CLICK` with your mouse create point on where you clicked
+- Press the `G` key to generate a random point
+- Press the `S` key to start the algorithm with your set of points
+- Press the `SPACEBAR` to iterate to the next step
+- Press the `R` key to reset the algorithm, where you can press `S` again to start with the same set of points
+- Press the `C` key to stop the algorithm and clear all the points
+
+## Visualization
+After starting the algorithm, a triangle will be drawn using three of the points.
+- Points
+  - Black points indicate points that are in the triangulation
+  - Light Grey points indicate points that have yet to be added to the triangulation
+  - Red points indicate the most recently added point, and the points that are involved when a circumcircle is displayed
+  - Dark Red points indicate the point that is on the opposite triangle of a quadrilateral when an edge is being checked if it is Locally Delaunay
+  - Yellow points indicate the circumcenter of the triangle formed by the Red points
+- Edges
+  - Grey edges indicate the edges in the triangulation
+  - Green edges indicate the edges that are in the queue to be checked if they are Locally Delaunay
+  - Blue edges indicate the current edge that is being checked if it is Locally Delaunay
+A Yellow circle is drawn when the current edge is an inside edge is being checked if it is Locally Delaunay. This is the circumcircle defined by the triangle formed by the Red points, centered on the Yellow circumcenter. If the Dark Red point is within the Yellow circle, then the current edge will be flipped.
+
+When the algorithm is complete, the background will turn green to indicate completion.
+
+## Static Walkthrough
 https://user-images.githubusercontent.com/48186448/116015435-3212b200-a607-11eb-8a45-fde9a8893821.mp4
-
-
-TODO LIST:
-- [x] Implement Halfedge data structure, with addleaf and addedge
-  - [x] get two sorting algorithms loglinear time, one for x-coord and one for slope
-  - [x] Use a stack to track points on the convex hull
-  - [x] Use a queue to track edges that need to be flipped
-  - [x] Save all the edges made during the convex hull process
-  - [x] Check the queued edges if they are locally Delaunay
-  - [x] Flip non-locally Delaunay edges
-- [x] Work on visualization
-- [ ] Write some tests
-  - [ ] Test sorting for setting up the points
-  - [ ] Test Convex Hull triangulation
-  - [ ] Test Locally Delaunay check
-  - [ ] Test edge flipping on a simple case
-
-Due Date: final code and presentation on April 29th
-
-Timeline for progress:
-- 4/1
-- 4/8
-- 4/15
-- 4/22
-- 4/29 project due along with presentation
 
 ## Environment and package info
 Please make sure you have installed the pyglet and numpy before running the code, Those two package can be installed using pip command
@@ -44,12 +49,5 @@ This project has been uploaded to PyPi as a package. You can download the packag
 After install the package, you can start the project by
 ```python3```
 and then ```>>> import grahamscan_delaunay```
-## Visualization
-Once you start the program, an empty window will pop up. You can add a point by click inside the window, or randomly generate one by pressing ```G```. 
-Once you finish adding points, press ```S``` to start the Delaunay algorithm step-by-step visualization. 
-To go to the next step, press the Space Bar. 
-To reset to the start of the algorithm, press ```R```. To clear all points, press ```C```.
-The red point indicates the most recently added point. 
-The blue edge indicates that the edge will be checked if it is Locally Delaunay. 
-A black point indicates that the point in in the triangulation while a gray point indicates that it has not yet been added to the triangulation.
-When the algorithm is complete, the background will turn green. Press ```R``` or ```C``` to reset the visualization.
+
+## Interesting Examples
