@@ -127,7 +127,7 @@ class GrahamScanDelaunay:
         h = self.q[-1] # Halfedge from p
         # Run graham scan to see if backtracking is needed
         while (point.orient(self.stack[-2].point, self.stack[-1].point, p) != 1):
-            self.stack.pop()
+            self.q.append(self.stack.pop())
             self._addedge(self.stack[-1], h)
             yield self._get_vis_data(p)
         # Connect the new point to the first point
@@ -189,19 +189,22 @@ class GrahamScanDelaunay:
     # are sorted in ascending order of their slope
     # with respect to the first point
     def _sort_points(self, V):
-        n = len(V)
-        # Sort by x-coordinates to get the first point
-        _V = sorted(V)
+        leftmost = min(V, key = lambda p: p[0])
+        _V = sorted(V, key = lambda p: point.slope(leftmost, p))
+        return _V
+        # n = len(V)
+        # # Sort by x-coordinates to get the first point
+        # _V = sorted(V)
         
-        # Map each point to the slope relative to the bottomleftmost point
-        pairs = [(_V[0], float('-inf'))]
-        for i in range(1,n):
-            pairs.append((_V[i], point.slope(_V[0], _V[i])))
+        # # Map each point to the slope relative to the bottomleftmost point
+        # pairs = [(_V[0], float('-inf'))]
+        # for i in range(1,n):
+        #     pairs.append((_V[i], point.slope(_V[0], _V[i])))
 
-        pairs = pairs[0:1] + sorted(pairs[1:], key=lambda p: p[1]) # Sort by slope
+        # pairs = pairs[0:1] + sorted(pairs[1:], key=lambda p: p[1]) # Sort by slope
 
-        # Return the list of points
-        output = []
-        for p in pairs:
-            output.append(p[0])
-        return output
+        # # Return the list of points
+        # output = []
+        # for p in pairs:
+        #     output.append(p[0])
+        # return output
