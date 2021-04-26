@@ -33,7 +33,13 @@ def fliptext(num):
     pyglet.text.Label('Flipped edges: ' + str(num),
             font_name='Arial',
             font_size=24, color=(0,0,0,255),
-            x=window.width//20, y=window.height//20,
+            x=50, y=50,
+            anchor_x='left', anchor_y='bottom').draw()
+def donetext():
+    pyglet.text.Label('DONE',
+            font_name='Arial',
+            font_size=24, color=(0,0,0,255),
+            x=50, y=100,
             anchor_x='left', anchor_y='bottom').draw()
 
 V = []
@@ -67,7 +73,7 @@ def on_key_press(symbol,modifiers):
     elif not ready and symbol == key.G: #generate randpt
         V.append(randpt())
     elif not ready and symbol == key.S: # start
-        if len(V) < 3:
+        if len(V) < 4:
             return
         g = grahamscandelaunay.GrahamScanDelaunay(V)
         stepofthealgorithm = g.run()
@@ -89,7 +95,8 @@ def on_key_press(symbol,modifiers):
 def on_draw():
     shapes.Rectangle(0,0,W,H,(255,255,255)).draw()
     if done:
-        shapes.Rectangle(0,0,W,H,(0,255,0)).draw()
+        shapes.Rectangle(0,0,W,H,(224,255,224)).draw()
+        donetext()
     pts = []
     if ready:
         if state[4] is not None:
