@@ -52,16 +52,16 @@ and then ```>>> import grahamscan_delaunay```
 
 ## Interesting Examples
 Simple 10-Gon
-[Simple 10-gon](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/10gon.PNG)
+![Simple 10-gon](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/10gon.PNG)
 
 Pentagon in a Pentagon
-[Pentagon in Pentagon](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/inscribed.PNG)
+![Pentagon in Pentagon](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/inscribed.PNG)
 
 Counterclockwise Inward Spiral starting from the left
-[Spiral](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/spiral1.PNG)
+![Spiral](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/spiral1.PNG)
 
 Hyperbolic Curve (Horizontal Gap) - looks like a suspension bridge
-[5up5down](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set1.PNG)
+![5up5down](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set1.PNG)
 
 Hyperbolic Curve (Vertical Gap) - looks like an hourglass
-[5left5right](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set1.PNG)
+![5left5right](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set1.PNG)
