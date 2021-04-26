@@ -1,9 +1,9 @@
-from .point import *
+import point
 from random import randrange
 import pyglet
 from pyglet import shapes
 from pyglet.window import key,mouse
-from .grahamscandelaunay import *
+import grahamscandelaunay
 from copy import deepcopy
 W,H = 1280, 720
 window =pyglet.window.Window(W,H)
@@ -28,7 +28,7 @@ def cir_1(p,r):
     shapes.Circle(p[0],p[1],5,segments=12,color=(255,255,0)).draw()
 def randpt():
     margin = 100
-    return  Point(randrange(margin,W-margin),randrange(margin,H-margin))
+    return  point.Point(randrange(margin,W-margin),randrange(margin,H-margin))
 def fliptext(num):
     pyglet.text.Label('Flipped edges: ' + str(num),
             font_name='Arial',
@@ -44,7 +44,7 @@ stepofthealgorithm = None
 @window.event
 def on_mouse_press(x,y,button,modifiers):
     if not ready and button == mouse.LEFT:
-        V.append(Point(x,y))
+        V.append(point.Point(x,y))
 
 @window.event
 def on_key_press(symbol,modifiers):
@@ -69,7 +69,7 @@ def on_key_press(symbol,modifiers):
     elif not ready and symbol == key.S: # start
         if len(V) < 3:
             return
-        g = GrahamScanDelaunay(V)
+        g = grahamscandelaunay.GrahamScanDelaunay(V)
         stepofthealgorithm = g.run()
         state = next(stepofthealgorithm)
         ready = True
@@ -93,7 +93,7 @@ def on_draw():
     pts = []
     if ready:
         if state[4] is not None:
-            cir_1(state[4], dist(state[4], state[2][0].point))
+            cir_1(state[4], point.dist(state[4], state[2][0].point))
     for v in V:
         pt_1(v)
     if ready:

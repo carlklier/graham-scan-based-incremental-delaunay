@@ -1,4 +1,4 @@
-from .point import *
+import point
 from collections import deque
 import numpy
 numpy.seterr(all='raise')
@@ -80,8 +80,8 @@ class GrahamScanDelaunay:
 
     # returns the circumcenter of the triangle the halfedge is in
     def _getCircumcenter(self, h):
-        print("Checking cc(", h.point, h.prev.point, h.link.point, ") = ", circumcenter(h.point, h.prev.point, h.link.point))
-        return circumcenter(h.point, h.prev.point, h.link.point)
+        print("Checking cc(", h.point, h.prev.point, h.link.point, ") = ", point.circumcenter(h.point, h.prev.point, h.link.point))
+        return point.circumcenter(h.point, h.prev.point, h.link.point)
 
     # returns whether the edge is on the convex hull
     def _isOutside(self, h):
@@ -126,7 +126,7 @@ class GrahamScanDelaunay:
         yield self._get_vis_data(p)
         h = self.q[-1] # Halfedge from p
         # Run graham scan to see if backtracking is needed
-        while (orient(self.stack[-2].point, self.stack[-1].point, p) != 1):
+        while (point.orient(self.stack[-2].point, self.stack[-1].point, p) != 1):
             self.stack.pop()
             self._addedge(self.stack[-1], h)
             yield self._get_vis_data(p)
@@ -150,8 +150,8 @@ class GrahamScanDelaunay:
             return
         # if not locally delaunay, flip the edge
         print("Checking incircle(", h.point, h.prev.point, h.link.point, h.twin.prev.point, ")")
-        print("Incircle returns: ", incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point))
-        if incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point) > 0:
+        print("Incircle returns: ", point.incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point))
+        if point.incircle(h.point, h.prev.point, h.link.point, h.twin.prev.point) > 0:
             print("Flipping Edge")
             self._flipedge(h)
             self.flips += 1
@@ -196,7 +196,7 @@ class GrahamScanDelaunay:
         # Map each point to the slope relative to the bottomleftmost point
         pairs = [(_V[0], float('-inf'))]
         for i in range(1,n):
-            pairs.append((_V[i], slope(_V[0], _V[i])))
+            pairs.append((_V[i], point.slope(_V[0], _V[i])))
 
         pairs = pairs[0:1] + sorted(pairs[1:], key=lambda p: p[1]) # Sort by slope
 
