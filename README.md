@@ -64,4 +64,4 @@ Hyperbolic Curve (Horizontal Gap) - looks like a suspension bridge
 ![5up5down](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set1.PNG)
 
 Hyperbolic Curve (Vertical Gap) - looks like an hourglass
-![5left5right](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set1.PNG)
+![5left5right](https://raw.githubusercontent.com/carlklier/graham-scan-based-incremental-delaunay/main/img/set2.PNG)
