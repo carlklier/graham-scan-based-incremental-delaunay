@@ -2,6 +2,11 @@
 
 A Delaunay triangulation algorithm visualization that incrementally add points during the process and uses Graham Scan to construct the initial triangulation of the iteration.
 
+## Documentation
+[Point.py](https://carlklier.github.io/graham-scan-based-incremental-delaunay/html/point.html)  
+[Grahamscandelaunay.py](https://carlklier.github.io/graham-scan-based-incremental-delaunay/html/grahamscandelaunay.html)  
+[Visual.py](https://carlklier.github.io/graham-scan-based-incremental-delaunay/html/visual.html)  
+
 ## Graham Scan-Based Incremental Delaunay Triangulation Algorithm
 Given a list of points:
 - Sort the list of points such that:
