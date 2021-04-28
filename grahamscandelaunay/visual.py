@@ -170,12 +170,10 @@ def on_key_press(symbol,modifiers):
         try:
             state = next(stepofthealgorithm)
             save_state(state)
-            print("NEXT")
         except StopIteration:
             done = True
             state = load_state()
             save_state(state)
-            print("STOP")
             pass
 
 @window.event
