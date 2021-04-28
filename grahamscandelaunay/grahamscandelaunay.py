@@ -185,7 +185,7 @@ class GrahamScanDelaunay:
         self._addedge(h, self.stack[0])
         yield self._get_vis_data(p)
         # Add the convex hull outside halfedge to the stack
-        self.q.append(h.link)
+        # self.q.append(h.link)
         h2 = self.stack.pop()
         if h2 not in self.q and h.twin not in self.q:
             self.q.append(h2)
