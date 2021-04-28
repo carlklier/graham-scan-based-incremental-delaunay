@@ -9,33 +9,116 @@ W,H = 1280, 720
 window =pyglet.window.Window(W,H)
 
 def pt_1(p):
+    """Draws a light grey colored point.
+    
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    """
     shapes.Circle(p[0],p[1],5,segments=12,color=(192,192,192)).draw()
 def pt_2(p):
+    """Draws a black colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    """
     shapes.Circle(p[0],p[1],5,segments=12,color=(0,0,0)).draw()
 def pt_3(p):
+    """Draws a red colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    """
     shapes.Circle(p[0],p[1],5,segments=12,color=(255,0,0)).draw()
 def pt_4(p):
+    """Draws a rust colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    """
     shapes.Circle(p[0],p[1],5,segments=12,color=(128,0,0)).draw()
 def line_1(a,b):
+    """Draws a dark gray line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    """
     shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(128,128,128)).draw()
 def line_2(a,b):
+    """Draws a blue line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    """
     shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,0,255)).draw()
 def line_3(a,b):
+    """Draws a green line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    """
     shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,192,0)).draw()
 def cir_1(p,r):
+    """Draws a yellow circle centered at p with radius r.
+
+    Parameters
+    ------------
+    p : Point
+        The first point of the line
+    
+    r : Float
+        The radius of the circle
+    """
     shapes.Circle(p[0],p[1],r,color=(255,255,0)).draw()
     shapes.Circle(p[0],p[1],r-2,color=(255,255,255)).draw()
     shapes.Circle(p[0],p[1],5,segments=12,color=(255,255,0)).draw()
 def randpt():
+    """creates a random point within a certain margin of the width and height.
+    
+    Returns
+    ------------
+    Point
+        The random Point created.
+    """
     margin = 100
     return  point.Point(randrange(margin,W-margin),randrange(margin,H-margin))
 def fliptext(num):
+    """ Creates the visual text that shows the number of flipped edges.
+    
+    Parameters
+    -----------
+    num : Integer
+        The number of flips to show on the screen.
+    """
     pyglet.text.Label('Flipped edges: ' + str(num),
             font_name='Arial',
             font_size=24, color=(0,0,0,255),
             x=50, y=50,
             anchor_x='left', anchor_y='bottom').draw()
 def donetext():
+    """Creates the visual text that shows when the algorithm has completed."""
     pyglet.text.Label('DONE',
             font_name='Arial',
             font_size=24, color=(0,0,0,255),
@@ -49,11 +132,15 @@ state = None
 stepofthealgorithm = None
 @window.event
 def on_mouse_press(x,y,button,modifiers):
+    """On the click of the mouse, creates a new point at the location of the mouse pointer."""
+
     if not ready and button == mouse.LEFT:
         V.append(point.Point(x,y))
 
 @window.event
 def on_key_press(symbol,modifiers):
+    """An event that triggers when a certain key is pressed."""
+
     global ready
     global state
     global stepofthealgorithm
@@ -93,6 +180,8 @@ def on_key_press(symbol,modifiers):
 
 @window.event
 def on_draw():
+    """ An event that triggers an draws to the window."""
+
     shapes.Rectangle(0,0,W,H,(255,255,255)).draw()
     if done:
         shapes.Rectangle(0,0,W,H,(224,255,224)).draw()
@@ -127,8 +216,22 @@ def on_draw():
     
 savestate = None
 def save_state(state):
+    """ saves the state of the algorithm.
+    
+    Parameters
+    -----------
+    state : List
+        The state of the algorithm containing the current point, the stack, queue, edge list, etc.
+    """
     global savestate
     savestate = deepcopy(state)
 def load_state():
+    """ loads the state of the algorithm.
+
+    Returns
+    -----------
+    List
+        The state of the algorithm containing the current point, the stack, queue, edge list, etc.
+    """
     return savestate
 pyglet.app.run()

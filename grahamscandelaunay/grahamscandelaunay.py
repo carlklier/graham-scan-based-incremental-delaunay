@@ -4,14 +4,58 @@ import numpy
 numpy.seterr(all='raise')
 
 class HalfEdge:
+    """This class represents a HalfEdge in a HalfEdge data structure."""
+
     def __init__(self, point, link = None, prev = None, twin = None):
+        """
+        Parameters
+        -----------
+        point : Point
+            The start point for the half edge
+
+        link : HalfEdge
+            The next HalfEdge that this HalfEdge points to
+        
+        prev : HalfEdge
+            the previous HalfEdge that links to this HalfEdge
+        
+        twin : HalfEdge
+            The twin HalfEdge of this HalfEdge
+        """
         self.point = point
         self.link = link
         self.prev = prev
         self.twin = twin
 
 class GrahamScanDelaunay:
+    """This class represents an instance of the Graham Scan Based Incremenatal Delaunay algorithm."""
     def __init__(self, V):
+        """
+        The __init__ method will sort the points to be in ccw order. It will also create the stack, queue,
+        and a list of edges used in the incremental algorithm.
+
+        Parameters
+        -----------
+        V : List
+            The List of Point objects for the incremental delaunay algorithm to run on.
+
+        Attributes
+        --------------
+        V : List
+            The list of Point objects for the incremental delaunay algorithm to run on.
+
+        stack : Deque
+            The stack maintains the edges on the convex hull.
+
+        q : Deque
+            q is a queue that maintains the edges that need to be checked to see if they are delaunay.
+
+        edges : Deque
+            This is a list of all the edges that are in the triangulation.
+
+        flips : Integer
+            Maintains a count of the number of edges that have been fliped to be locally delaunay
+        """
         # Assume General Position: No 3 points in V are collinear
         # and no 4 points in V are cocircular
 
@@ -26,6 +70,18 @@ class GrahamScanDelaunay:
 
     # Yields the current iteration, the sorted list of points, and the edges in the triangulation
     def run(self):
+        """ This method is used to run the graham scan based incremental delaunay algorithm.
+
+        It yeilds the state of the algorithm at each iteration to the visualization.
+        This method starts out by first creating a base triangle of the first 3 points from the list of points
+        sorted in CCW order. 
+
+        It then incrementally adds another point to the triangularization. It does this by running the graham
+        scan algorithm to get the next edge of the convex hull, then adds the edge from the initial point to the 
+        current point, and then checks to see if the edge added is locally delaunay. If it is delaunay, we proceed
+        to the next point. If it is not delaunay, we flip the edge.
+        """
+
         n=len(self.V)
 
         # Construct base triangle
