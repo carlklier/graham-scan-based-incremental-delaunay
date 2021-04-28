@@ -48,7 +48,7 @@ This project has been uploaded to PyPi as a package. You can download the packag
 ```python3 -m pip install graham-scan-based-incremental-delaunay```
 After install the package, you can start the project by
 ```python3```
-and then ```>>> import grahamscan_delaunay```
+and then ```>>> from grahamscandelaunay import visual```
 
 ## Interesting Examples
 Simple 10-Gon
