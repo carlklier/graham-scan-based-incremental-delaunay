@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>visual API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>visual</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import point
+from random import randrange
+import pyglet
+from pyglet import shapes
+from pyglet.window import key,mouse
+import grahamscandelaunay
+from copy import deepcopy
+W,H = 1280, 720
+window =pyglet.window.Window(W,H)
+
+def pt_1(p):
+    &#34;&#34;&#34;Draws a light grey colored point.
+    
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(192,192,192)).draw()
+def pt_2(p):
+    &#34;&#34;&#34;Draws a black colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(0,0,0)).draw()
+def pt_3(p):
+    &#34;&#34;&#34;Draws a red colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(255,0,0)).draw()
+def pt_4(p):
+    &#34;&#34;&#34;Draws a rust colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(128,0,0)).draw()
+def line_1(a,b):
+    &#34;&#34;&#34;Draws a dark gray line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    &#34;&#34;&#34;
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(128,128,128)).draw()
+def line_2(a,b):
+    &#34;&#34;&#34;Draws a blue line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    &#34;&#34;&#34;
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,0,255)).draw()
+def line_3(a,b):
+    &#34;&#34;&#34;Draws a green line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    &#34;&#34;&#34;
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,192,0)).draw()
+def cir_1(p,r):
+    &#34;&#34;&#34;Draws a yellow circle centered at p with radius r.
+
+    Parameters
+    ------------
+    p : Point
+        The first point of the line
+    
+    r : Float
+        The radius of the circle
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],r,color=(255,255,0)).draw()
+    shapes.Circle(p[0],p[1],r-2,color=(255,255,255)).draw()
+    shapes.Circle(p[0],p[1],5,segments=12,color=(255,255,0)).draw()
+def randpt():
+    &#34;&#34;&#34;creates a random point within a certain margin of the width and height.
+    
+    Returns
+    ------------
+    Point
+        The random Point created.
+    &#34;&#34;&#34;
+    margin = 100
+    return  point.Point(randrange(margin,W-margin),randrange(margin,H-margin))
+def fliptext(num):
+    &#34;&#34;&#34; Creates the visual text that shows the number of flipped edges.
+    
+    Parameters
+    -----------
+    num : Integer
+        The number of flips to show on the screen.
+    &#34;&#34;&#34;
+    pyglet.text.Label(&#39;Flipped edges: &#39; + str(num),
+            font_name=&#39;Arial&#39;,
+            font_size=24, color=(0,0,0,255),
+            x=50, y=50,
+            anchor_x=&#39;left&#39;, anchor_y=&#39;bottom&#39;).draw()
+def donetext():
+    &#34;&#34;&#34;Creates the visual text that shows when the algorithm has completed.&#34;&#34;&#34;
+    pyglet.text.Label(&#39;DONE&#39;,
+            font_name=&#39;Arial&#39;,
+            font_size=24, color=(0,0,0,255),
+            x=50, y=100,
+            anchor_x=&#39;left&#39;, anchor_y=&#39;bottom&#39;).draw()
+
+V = []
+ready = False
+done = False
+state = None
+stepofthealgorithm = None
+@window.event
+def on_mouse_press(x,y,button,modifiers):
+    &#34;&#34;&#34;On the click of the mouse, creates a new point at the location of the mouse pointer.&#34;&#34;&#34;
+
+    if not ready and button == mouse.LEFT:
+        V.append(point.Point(x,y))
+
+@window.event
+def on_key_press(symbol,modifiers):
+    &#34;&#34;&#34;An event that triggers when a certain key is pressed.&#34;&#34;&#34;
+
+    global ready
+    global state
+    global stepofthealgorithm
+    global V
+    global done
+    if ready and symbol == key.R: # reset
+        ready = False
+        done = False
+        state = None
+        stepofthealgorithm = None
+    elif symbol == key.C: # clear all
+        ready = False
+        done = False
+        state = None
+        stepofthealgorithm = None
+        V = []
+    elif not ready and symbol == key.G: #generate randpt
+        V.append(randpt())
+    elif not ready and symbol == key.S: # start
+        if len(V) &lt; 4:
+            return
+        g = grahamscandelaunay.GrahamScanDelaunay(V)
+        stepofthealgorithm = g.run()
+        state = next(stepofthealgorithm)
+        ready = True
+    elif ready and symbol == key.SPACE: # next
+        try:
+            state = next(stepofthealgorithm)
+            save_state(state)
+            print(&#34;NEXT&#34;)
+        except StopIteration:
+            done = True
+            state = load_state()
+            save_state(state)
+            print(&#34;STOP&#34;)
+            pass
+
+@window.event
+def on_draw():
+    &#34;&#34;&#34; An event that triggers an draws to the window.&#34;&#34;&#34;
+
+    shapes.Rectangle(0,0,W,H,(255,255,255)).draw()
+    if done:
+        shapes.Rectangle(0,0,W,H,(224,255,224)).draw()
+        donetext()
+    pts = []
+    if ready:
+        if state[4] is not None:
+            cir_1(state[4], point.dist(state[4], state[2][0].point))
+    for v in V:
+        pt_1(v)
+    if ready:
+        for halfedge in state[1]: # draw edges
+            pts.append(halfedge.point)
+            line_1(halfedge.point,halfedge.link.point)
+        if len(state[2]) &gt; 0: # highlight current edge
+            for h in state[2]: #color queued edges
+                line_3(h.point, h.link.point)
+            if state[5]: 
+                line_2(state[2][0].point,state[2][0].link.point)
+        
+        for p in pts: # draw points
+            pt_2(p)
+        if len(state[2]) &gt; 0 and state[4] is not None: # highlight incircle test points
+            h = state[2][0]
+            pt_3(h.point)
+            pt_3(h.link.point)
+            pt_3(h.prev.point)
+            pt_4(h.twin.prev.point)
+        if state[0] is not None: # highlight current pt
+            pt_3(state[0])
+        fliptext(state[6])
+    
+savestate = None
+def save_state(state):
+    &#34;&#34;&#34; saves the state of the algorithm.
+    
+    Parameters
+    -----------
+    state : List
+        The state of the algorithm containing the current point, the stack, queue, edge list, etc.
+    &#34;&#34;&#34;
+    global savestate
+    savestate = deepcopy(state)
+def load_state():
+    &#34;&#34;&#34; loads the state of the algorithm.
+
+    Returns
+    -----------
+    List
+        The state of the algorithm containing the current point, the stack, queue, edge list, etc.
+    &#34;&#34;&#34;
+    return savestate
+pyglet.app.run()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="visual.cir_1"><code class="name flex">
+<span>def <span class="ident">cir_1</span></span>(<span>p, r)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a yellow circle centered at p with radius r.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The first point of the line</dd>
+<dt><strong><code>r</code></strong> :&ensp;<code>Float</code></dt>
+<dd>The radius of the circle</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cir_1(p,r):
+    &#34;&#34;&#34;Draws a yellow circle centered at p with radius r.
+
+    Parameters
+    ------------
+    p : Point
+        The first point of the line
+    
+    r : Float
+        The radius of the circle
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],r,color=(255,255,0)).draw()
+    shapes.Circle(p[0],p[1],r-2,color=(255,255,255)).draw()
+    shapes.Circle(p[0],p[1],5,segments=12,color=(255,255,0)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.donetext"><code class="name flex">
+<span>def <span class="ident">donetext</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates the visual text that shows when the algorithm has completed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def donetext():
+    &#34;&#34;&#34;Creates the visual text that shows when the algorithm has completed.&#34;&#34;&#34;
+    pyglet.text.Label(&#39;DONE&#39;,
+            font_name=&#39;Arial&#39;,
+            font_size=24, color=(0,0,0,255),
+            x=50, y=100,
+            anchor_x=&#39;left&#39;, anchor_y=&#39;bottom&#39;).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.fliptext"><code class="name flex">
+<span>def <span class="ident">fliptext</span></span>(<span>num)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates the visual text that shows the number of flipped edges.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>num</code></strong> :&ensp;<code>Integer</code></dt>
+<dd>The number of flips to show on the screen.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fliptext(num):
+    &#34;&#34;&#34; Creates the visual text that shows the number of flipped edges.
+    
+    Parameters
+    -----------
+    num : Integer
+        The number of flips to show on the screen.
+    &#34;&#34;&#34;
+    pyglet.text.Label(&#39;Flipped edges: &#39; + str(num),
+            font_name=&#39;Arial&#39;,
+            font_size=24, color=(0,0,0,255),
+            x=50, y=50,
+            anchor_x=&#39;left&#39;, anchor_y=&#39;bottom&#39;).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.line_1"><code class="name flex">
+<span>def <span class="ident">line_1</span></span>(<span>a, b)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a dark gray line.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The first point of the line</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The second point of the line</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def line_1(a,b):
+    &#34;&#34;&#34;Draws a dark gray line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    &#34;&#34;&#34;
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(128,128,128)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.line_2"><code class="name flex">
+<span>def <span class="ident">line_2</span></span>(<span>a, b)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a blue line.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The first point of the line</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The second point of the line</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def line_2(a,b):
+    &#34;&#34;&#34;Draws a blue line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    &#34;&#34;&#34;
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,0,255)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.line_3"><code class="name flex">
+<span>def <span class="ident">line_3</span></span>(<span>a, b)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a green line.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The first point of the line</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Point</code></dt>
+<dd>The second point of the line</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def line_3(a,b):
+    &#34;&#34;&#34;Draws a green line.
+
+    Parameters
+    ------------
+    a : Point
+        The first point of the line
+    
+    b : Point
+        The second point of the line
+    &#34;&#34;&#34;
+    shapes.Line(a[0],a[1],b[0],b[1],width=3,color=(0,192,0)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.load_state"><code class="name flex">
+<span>def <span class="ident">load_state</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>loads the state of the algorithm.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List</code></dt>
+<dd>The state of the algorithm containing the current point, the stack, queue, edge list, etc.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_state():
+    &#34;&#34;&#34; loads the state of the algorithm.
+
+    Returns
+    -----------
+    List
+        The state of the algorithm containing the current point, the stack, queue, edge list, etc.
+    &#34;&#34;&#34;
+    return savestate</code></pre>
+</details>
+</dd>
+<dt id="visual.on_draw"><code class="name flex">
+<span>def <span class="ident">on_draw</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An event that triggers an draws to the window.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@window.event
+def on_draw():
+    &#34;&#34;&#34; An event that triggers an draws to the window.&#34;&#34;&#34;
+
+    shapes.Rectangle(0,0,W,H,(255,255,255)).draw()
+    if done:
+        shapes.Rectangle(0,0,W,H,(224,255,224)).draw()
+        donetext()
+    pts = []
+    if ready:
+        if state[4] is not None:
+            cir_1(state[4], point.dist(state[4], state[2][0].point))
+    for v in V:
+        pt_1(v)
+    if ready:
+        for halfedge in state[1]: # draw edges
+            pts.append(halfedge.point)
+            line_1(halfedge.point,halfedge.link.point)
+        if len(state[2]) &gt; 0: # highlight current edge
+            for h in state[2]: #color queued edges
+                line_3(h.point, h.link.point)
+            if state[5]: 
+                line_2(state[2][0].point,state[2][0].link.point)
+        
+        for p in pts: # draw points
+            pt_2(p)
+        if len(state[2]) &gt; 0 and state[4] is not None: # highlight incircle test points
+            h = state[2][0]
+            pt_3(h.point)
+            pt_3(h.link.point)
+            pt_3(h.prev.point)
+            pt_4(h.twin.prev.point)
+        if state[0] is not None: # highlight current pt
+            pt_3(state[0])
+        fliptext(state[6])</code></pre>
+</details>
+</dd>
+<dt id="visual.on_key_press"><code class="name flex">
+<span>def <span class="ident">on_key_press</span></span>(<span>symbol, modifiers)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An event that triggers when a certain key is pressed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@window.event
+def on_key_press(symbol,modifiers):
+    &#34;&#34;&#34;An event that triggers when a certain key is pressed.&#34;&#34;&#34;
+
+    global ready
+    global state
+    global stepofthealgorithm
+    global V
+    global done
+    if ready and symbol == key.R: # reset
+        ready = False
+        done = False
+        state = None
+        stepofthealgorithm = None
+    elif symbol == key.C: # clear all
+        ready = False
+        done = False
+        state = None
+        stepofthealgorithm = None
+        V = []
+    elif not ready and symbol == key.G: #generate randpt
+        V.append(randpt())
+    elif not ready and symbol == key.S: # start
+        if len(V) &lt; 4:
+            return
+        g = grahamscandelaunay.GrahamScanDelaunay(V)
+        stepofthealgorithm = g.run()
+        state = next(stepofthealgorithm)
+        ready = True
+    elif ready and symbol == key.SPACE: # next
+        try:
+            state = next(stepofthealgorithm)
+            save_state(state)
+            print(&#34;NEXT&#34;)
+        except StopIteration:
+            done = True
+            state = load_state()
+            save_state(state)
+            print(&#34;STOP&#34;)
+            pass</code></pre>
+</details>
+</dd>
+<dt id="visual.on_mouse_press"><code class="name flex">
+<span>def <span class="ident">on_mouse_press</span></span>(<span>x, y, button, modifiers)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>On the click of the mouse, creates a new point at the location of the mouse pointer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@window.event
+def on_mouse_press(x,y,button,modifiers):
+    &#34;&#34;&#34;On the click of the mouse, creates a new point at the location of the mouse pointer.&#34;&#34;&#34;
+
+    if not ready and button == mouse.LEFT:
+        V.append(point.Point(x,y))</code></pre>
+</details>
+</dd>
+<dt id="visual.pt_1"><code class="name flex">
+<span>def <span class="ident">pt_1</span></span>(<span>p)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a light grey colored point.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>Point</code></dt>
+<dd>the point to draw.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pt_1(p):
+    &#34;&#34;&#34;Draws a light grey colored point.
+    
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(192,192,192)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.pt_2"><code class="name flex">
+<span>def <span class="ident">pt_2</span></span>(<span>p)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a black colored point.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>Point</code></dt>
+<dd>the point to draw.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pt_2(p):
+    &#34;&#34;&#34;Draws a black colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(0,0,0)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.pt_3"><code class="name flex">
+<span>def <span class="ident">pt_3</span></span>(<span>p)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a red colored point.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>Point</code></dt>
+<dd>the point to draw.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pt_3(p):
+    &#34;&#34;&#34;Draws a red colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(255,0,0)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.pt_4"><code class="name flex">
+<span>def <span class="ident">pt_4</span></span>(<span>p)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws a rust colored point.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>Point</code></dt>
+<dd>the point to draw.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pt_4(p):
+    &#34;&#34;&#34;Draws a rust colored point.
+
+    Parameters
+    -----------
+    p : Point
+        the point to draw.
+    &#34;&#34;&#34;
+    shapes.Circle(p[0],p[1],5,segments=12,color=(128,0,0)).draw()</code></pre>
+</details>
+</dd>
+<dt id="visual.randpt"><code class="name flex">
+<span>def <span class="ident">randpt</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>creates a random point within a certain margin of the width and height.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Point</code></dt>
+<dd>The random Point created.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def randpt():
+    &#34;&#34;&#34;creates a random point within a certain margin of the width and height.
+    
+    Returns
+    ------------
+    Point
+        The random Point created.
+    &#34;&#34;&#34;
+    margin = 100
+    return  point.Point(randrange(margin,W-margin),randrange(margin,H-margin))</code></pre>
+</details>
+</dd>
+<dt id="visual.save_state"><code class="name flex">
+<span>def <span class="ident">save_state</span></span>(<span>state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>saves the state of the algorithm.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>state</code></strong> :&ensp;<code>List</code></dt>
+<dd>The state of the algorithm containing the current point, the stack, queue, edge list, etc.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_state(state):
+    &#34;&#34;&#34; saves the state of the algorithm.
+    
+    Parameters
+    -----------
+    state : List
+        The state of the algorithm containing the current point, the stack, queue, edge list, etc.
+    &#34;&#34;&#34;
+    global savestate
+    savestate = deepcopy(state)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="visual.cir_1" href="#visual.cir_1">cir_1</a></code></li>
+<li><code><a title="visual.donetext" href="#visual.donetext">donetext</a></code></li>
+<li><code><a title="visual.fliptext" href="#visual.fliptext">fliptext</a></code></li>
+<li><code><a title="visual.line_1" href="#visual.line_1">line_1</a></code></li>
+<li><code><a title="visual.line_2" href="#visual.line_2">line_2</a></code></li>
+<li><code><a title="visual.line_3" href="#visual.line_3">line_3</a></code></li>
+<li><code><a title="visual.load_state" href="#visual.load_state">load_state</a></code></li>
+<li><code><a title="visual.on_draw" href="#visual.on_draw">on_draw</a></code></li>
+<li><code><a title="visual.on_key_press" href="#visual.on_key_press">on_key_press</a></code></li>
+<li><code><a title="visual.on_mouse_press" href="#visual.on_mouse_press">on_mouse_press</a></code></li>
+<li><code><a title="visual.pt_1" href="#visual.pt_1">pt_1</a></code></li>
+<li><code><a title="visual.pt_2" href="#visual.pt_2">pt_2</a></code></li>
+<li><code><a title="visual.pt_3" href="#visual.pt_3">pt_3</a></code></li>
+<li><code><a title="visual.pt_4" href="#visual.pt_4">pt_4</a></code></li>
+<li><code><a title="visual.randpt" href="#visual.randpt">randpt</a></code></li>
+<li><code><a title="visual.save_state" href="#visual.save_state">save_state</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
