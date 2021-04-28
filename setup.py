@@ -4,7 +4,7 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
     
 setup(
-    version='0.1.1',
+    version='0.2.0',
     name='graham-scan-based-incremental-delaunay',
     author="Carl Klier, Jimmy Zheng, Zhikai Gao",
     url='https://github.com/carlklier/graham-scan-based-incremental-delaunay',
