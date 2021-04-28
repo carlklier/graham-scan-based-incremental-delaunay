@@ -206,19 +206,72 @@ class TestGrahamScanDelaunay(unittest.TestCase):
         # These also test the _get_vis_data(), _current_edge(), and _getedges() methods
         self.assertEqual(state[0], None)
         self.assertEqual(len(list(state[1])), 3)
-        self.assertEqual(state[2], None)
+        self.assertEqual(len(list(state[2])), 0)
+        self.assertEqual(len(list(state[3])), 3)
+        self.assertEqual(state[4], None)
+        self.assertEqual(state[5], False)
+        self.assertEqual(state[6], 0)
 
         state = next(step)
 
         # also tests _incrementalhull() and _isdelaunay()
         self.assertEqual(state[0], p1)
-        self.assertEqual(len(list(state[1])), 5)
-        self.assertEqual(state[2], gsd.q[0])
+        self.assertEqual(len(list(state[1])), 4)
+        self.assertEqual(len(list(state[2])), 1)
+        self.assertEqual(len(list(state[3])), 3)
+        self.assertEqual(state[4], None)
+        self.assertEqual(state[5], False)
+        self.assertEqual(state[6], 0)
 
-        self.assertEqual(len(gsd.q), 4)
-        for i in range(4):
-            # we shouldn't need to flip any edges so q should just run out after 4 steps
-            state = next(step)
+        state = next(step)
+
+        self.assertEqual(state[0], p1)
+        self.assertEqual(len(list(state[1])), 5)
+        self.assertEqual(len(list(state[2])), 2)
+        self.assertEqual(len(list(state[3])), 3)
+        self.assertEqual(state[4], None)
+        self.assertEqual(state[5], False)
+        self.assertEqual(state[6], 0)
+
+        state = next(step)
+
+        self.assertEqual(state[0], p1)
+        self.assertEqual(len(list(state[1])), 5)
+        self.assertEqual(len(list(state[2])), 3)
+        self.assertEqual(len(list(state[3])), 4)
+        self.assertEqual(state[4], None)
+        self.assertEqual(state[5], True)
+        self.assertEqual(state[6], 0)
+
+        state = next(step)
+
+        self.assertEqual(state[0], p1)
+        self.assertEqual(len(list(state[1])), 5)
+        self.assertEqual(len(list(state[2])), 2)
+        self.assertEqual(len(list(state[3])), 4)
+        self.assertEqual(state[4], None)
+        self.assertEqual(state[5], True)
+        self.assertEqual(state[6], 0)
+
+        state = next(step)
+
+        self.assertEqual(state[0], p1)
+        self.assertEqual(len(list(state[1])), 5)
+        self.assertEqual(len(list(state[2])), 1)
+        self.assertEqual(len(list(state[3])), 4)
+        self.assertIsNotNone(state[4])
+        self.assertEqual(state[5], True)
+        self.assertEqual(state[6], 0)
+
+        state = next(step)
+
+        self.assertEqual(state[0], p1)
+        self.assertEqual(len(list(state[1])), 5)
+        self.assertEqual(len(list(state[2])), 0)
+        self.assertEqual(len(list(state[3])), 4)
+        self.assertEqual(state[4], None)
+        self.assertEqual(state[5], True)
+        self.assertEqual(state[6], 0)
 
         with self.assertRaises(StopIteration):
             next(step)
